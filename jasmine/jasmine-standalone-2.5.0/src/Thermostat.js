@@ -1,3 +1,4 @@
+
 function Thermostat() {
   this.temperature = 20;
   this.MIN_TEMPERATURE = 10;
