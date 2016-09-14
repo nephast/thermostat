@@ -46,4 +46,7 @@ Thermostat.prototype = {
     }
   }
 
+  // changePowerSavingMode:
+  // this._powerSaving != this._powerSaving
+
 };
