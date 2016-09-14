@@ -36,4 +36,14 @@ Thermostat.prototype = {
     this._temperature = 20;
   },
 
+  colour: function() {
+    if (this._temperature < 18) {
+      return 'green';
+    } else if (this._temperature > 24) {
+      return 'red';
+    } else {
+      return 'yellow';
+    }
+  }
+
 };

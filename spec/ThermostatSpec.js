@@ -82,4 +82,24 @@ describe("Thermostat", function(){
       });
     });
 
+    describe("colour", function() {
+      it('returns yellow when at default temperature', function() {
+        expect(thermostat.colour()).toEqual('yellow');
+      });
+
+      it('returns green when below 18 degrees', function() {
+        for (i = 0; i < 3; i++) {
+          thermostat.decrease();
+        }
+        expect(thermostat.colour()).toEqual('green');
+      });
+
+      it('returns green when below 18 degrees', function() {
+        for (i = 0; i < 5; i++) {
+          thermostat.increase();
+        }
+        expect(thermostat.colour()).toEqual('red');
+      });
+    });
+
 });
