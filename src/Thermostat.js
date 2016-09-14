@@ -8,6 +8,8 @@ Thermostat.prototype = {
   },
 
   decrease: function() {
-    this._temperature --;
+    if (this._temperature > 10) {
+      this._temperature --;
+    }
   },
 };

@@ -26,6 +26,15 @@ describe("Thermostat", function(){
       expect(thermostat._temperature).toEqual(19);
     });
 
+    it("will not decrease temperature further than 10", function(){
+      for (i = 0; i < 10; i++) {
+        thermostat.decrease();
+      }
+      expect(thermostat._temperature).toEqual(10);
+      thermostat.decrease();
+      expect(thermostat._temperature).toEqual(10);
+    });
+
   });
 
 
