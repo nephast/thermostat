@@ -30,4 +30,13 @@ describe("Thermostat", function() {
     });
   });
 
+  describe('power saving mode', function() {
+    it('maximum temp is 25 if ON', function() {
+      var increaseALot = function() {
+          thermostat.increaseTempBy(10);
+      };
+      expect(increaseALot).toThrowError(RangeError, "Temperature can not be set above 25.");
+    });
+  });
+
 });
