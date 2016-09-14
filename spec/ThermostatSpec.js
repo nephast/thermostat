@@ -10,6 +10,10 @@ describe("Thermostat", function(){
     expect(thermostat._temperature).toEqual(20);
   });
 
+  it("starts with power saving on", function(){
+    expect(thermostat.powersaving).toBe(true);
+  });
+
   describe("increase", function(){
 
     it("increases temperature of thermostat by 1", function(){
@@ -36,6 +40,38 @@ describe("Thermostat", function(){
     });
 
   });
+
+
+    describe("turnPowerSavingOff", function(){
+
+      it("changes powersaving to false", function(){
+        thermostat.turnPowerSavingOff();
+        expect(thermostat.powersaving).toBe(false);
+      });
+
+    });
+
+    describe("turnPowerSavingOn", function(){
+
+      it("changes powersaving to true", function(){
+        thermostat.turnPowerSavingOff();
+        thermostat.turnPowerSavingOn();
+        expect(thermostat.powersaving).toBe(true);
+      });
+
+    });
+
+    describe("maxTemp", function(){
+      it("returns 25 if powersaving is on", function(){
+        expect(thermostat.maxTemp()).toEqual(25);
+      });
+
+      it("returns 32 if powersaving is off", function(){
+        thermostat.turnPowerSavingOff();
+        expect(thermostat.maxTemp()).toEqual(32);
+      });
+    });
+
 
 
 });
