@@ -65,9 +65,22 @@ describe("Thermostat", function() {
       thermostat.resetTemp();
       expect(thermostat.temperature).toEqual(20);
     });
-
   });
 
+  describe('usage statuses', function () {
+    it("is on high usage when the temp is > 25", function() {
+      thermostat.setSavingMode(false);
+      thermostat.temperature = 26;
+      expect(thermostat.usageStatus()).toEqual("High usage");
+    });
 
+    it("is on medium usage when the temp is betwee 18 & 25", function() {
+      expect(thermostat.usageStatus()).toEqual("Medium usage");
+    });
 
+    it("is on low usage when the temp is < 18", function() {
+      thermostat.temperature = 17;
+      expect(thermostat.usageStatus()).toEqual("Low usage");
+    });
+  });
 });

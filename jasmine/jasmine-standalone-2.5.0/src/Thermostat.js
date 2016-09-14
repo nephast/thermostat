@@ -11,6 +11,16 @@ function Thermostat() {
     else {
       return this.MAX_TEMPERATURE;
     }};
+  this.usageStatus = function() {
+    if(this.temperature < 18){
+      return "Low usage";
+    }
+    else if(this.temperature > 25){
+      return "High usage";
+    }
+    else {
+      return "Medium usage";
+  }};
 }
 
 Thermostat.prototype.increaseTempBy = function(amount) {
