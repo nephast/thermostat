@@ -3,21 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Thermostat Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="../public/style.css">
-
+    <!-- <link rel="stylesheet" type="text/css" href="../public/style.css"> -->
   </head>
   <body>
   <section>
-    <h1> id="temperature"></h1>
+    <h1 id="temperature"> </h1>
     <p>
+      power saving mode is <span id="power-saving-status">on</span>
+      <br>
+      <br>
       <button id="temperature-up">+</button>
       <button id="temperature-down">-</button>
       <button id="temperature-reset">reset</button>
-      power saving mode is <span id="power-saving-status">on</span>
+      <br>
+      <br>
       <button id="powersaving-on">PSM on</button>
       <button id="powersaving-off">PSM off</button>
     </p>
-  </section>  
+  </section>
       <script src="../src/Thermostat.js"></script>
+      <script src="../public/jquery.js"></script>
+      <script src="../public/dashboard.js"></script>
   </body>
 </html>
