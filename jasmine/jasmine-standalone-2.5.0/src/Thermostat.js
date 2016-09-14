@@ -1,35 +1,41 @@
 function Thermostat() {
   this.temperature = 20;
   this.MIN_TEMPERATURE = 10;
+  this.POWER_SAVE_MAX_TEMP = 25;
+  this.MAX_TEMPERATURE = 35;
   this.savingMode = true;
-  this.maxTemperature = function() {if (this.savingMode === true) {
-      return 25;
+  this.maxTemperature = function() {
+    if (this.savingMode === true) {
+      return this.POWER_SAVE_MAX_TEMP;
     }
     else {
-      return 32;
+      return this.MAX_TEMPERATURE;
     }};
 }
 
-Thermostat.prototype.increaseTempBy = function(ammount) {
-
-  if (this.temperature + ammount > this.maxTemperature())
+Thermostat.prototype.increaseTempBy = function(amount) {
+  if (this.temperature + amount > this.maxTemperature())
   {
     throw new RangeError("Temperature can not be set above " + this.maxTemperature() + ".");
   }
   else {
-    this.temperature = this.temperature + ammount;
+    this.temperature = this.temperature + amount;
   }
 };
 
-Thermostat.prototype.decreaseTempBy = function(ammount) {
-  if (this.temperature - ammount < this.MIN_TEMPERATURE) {
+Thermostat.prototype.decreaseTempBy = function(amount) {
+  if (this.temperature - amount < this.MIN_TEMPERATURE) {
     throw new RangeError("Temperature can not be set to below " + this.MIN_TEMPERATURE + ".");
   }
   else {
-    this.temperature = this.temperature - ammount;
+    this.temperature = this.temperature - amount;
   }
 };
 
 Thermostat.prototype.setSavingMode = function(boolean) {
    this.savingMode = boolean;
+};
+
+Thermostat.prototype.resetTemp = function () {
+  this.temperature = 20;
 };

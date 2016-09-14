@@ -32,11 +32,42 @@ describe("Thermostat", function() {
 
   describe('power saving mode', function() {
     it('maximum temp is 25 if ON', function() {
-      var increaseALot = function() {
+      var increaseByTen = function() {
           thermostat.increaseTempBy(10);
       };
-      expect(increaseALot).toThrowError(RangeError, "Temperature can not be set above 25.");
+      expect(increaseByTen).toThrowError(RangeError, "Temperature can not be set above 25.");
+    });
+
+    it('allows the temperature to go above 25 if power saving mode is off', function() {
+      thermostat.setSavingMode(false);
+      thermostat.increaseTempBy(6);
+      expect(thermostat.temperature).toEqual(26);
+    });
+
+    it('does not allow temp to go above 35 when power save mode is off', function() {
+      thermostat.setSavingMode(false);
+      var increaseBySixteen = function() {
+          thermostat.increaseTempBy(16);
+      };
+      expect(increaseBySixteen).toThrowError(RangeError, "Temperature can not be set above 35.");
     });
   });
+
+
+  describe('reset temperature', function() {
+    it('resets the temperature back to 20 from any temperature', function () {
+      thermostat.setSavingMode(false);
+      thermostat.increaseTempBy(6);
+      thermostat.resetTemp();
+      expect(thermostat.temperature).toEqual(20);
+
+      thermostat.decreaseTempBy(6);
+      thermostat.resetTemp();
+      expect(thermostat.temperature).toEqual(20);
+    });
+
+  });
+
+
 
 });
