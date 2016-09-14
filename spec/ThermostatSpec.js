@@ -11,7 +11,7 @@ describe("Thermostat", function(){
   });
 
   it("starts with power saving on", function(){
-    expect(thermostat.powersaving).toBe(true);
+    expect(thermostat._powerSaving).toBe(true);
   });
 
   describe("increase", function(){
@@ -46,7 +46,7 @@ describe("Thermostat", function(){
 
       it("changes powersaving to false", function(){
         thermostat.turnPowerSavingOff();
-        expect(thermostat.powersaving).toBe(false);
+        expect(thermostat._powerSaving).toBe(false);
       });
 
     });
@@ -56,7 +56,7 @@ describe("Thermostat", function(){
       it("changes powersaving to true", function(){
         thermostat.turnPowerSavingOff();
         thermostat.turnPowerSavingOn();
-        expect(thermostat.powersaving).toBe(true);
+        expect(thermostat._powerSaving).toBe(true);
       });
 
     });
@@ -72,6 +72,14 @@ describe("Thermostat", function(){
       });
     });
 
-
+    describe("resetTemp", function() {
+      it("resets temperature to default", function() {
+        for (i = 0; i < 5; i++) {
+          thermostat.decrease();
+        }
+        thermostat.resetTemp();
+        expect(thermostat._temperature).toEqual(20);
+      });
+    });
 
 });
