@@ -23,6 +23,13 @@ Thermostat.prototype = {
     this._powerSaving = true;
   },
 
+  powerSavingIndicator: function() {
+    if (this._powerSaving) {
+      return 'on'} else {
+        return 'off'
+      }
+  },
+
   maxTemp: function() {
     if (this._powerSaving) {
       return 25;
