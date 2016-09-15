@@ -8,17 +8,17 @@
 
         $("#temperature-up").click(function() {
           thermostat.increase();
-          $("#temperature").text(thermostat._temperature);
+          updateTemperature();
         });
 
         $("#temperature-down").click(function () {
           thermostat.decrease();
-          $("#temperature").text(thermostat._temperature);
+          updateTemperature();
         });
 
         $("#temperature-reset").click(function () {
           thermostat.resetTemp();
-          $("#temperature").text(thermostat._temperature);
+          updateTemperature();
         });
 
         $("#powersaving-on").click(function () {
@@ -30,5 +30,10 @@
           thermostat.turnPowerSavingOff();
           $("#power-saving-status").html(thermostat.powerSavingIndicator());
         });
+
+        function updateTemperature() {
+          $('#temperature').text(thermostat._temperature);
+          $('#temperature').attr('class', thermostat.colour());
+        }
 
     });

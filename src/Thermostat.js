@@ -6,7 +6,9 @@ function Thermostat() {
 
 Thermostat.prototype = {
   increase: function() {
-    this._temperature ++;
+    if (this._temperature < this.maxTemp()) {
+      this._temperature ++;
+    }
   },
 
   decrease: function() {
@@ -25,8 +27,9 @@ Thermostat.prototype = {
 
   powerSavingIndicator: function() {
     if (this._powerSaving) {
-      return 'on'} else {
-        return 'off'
+      return 'on';
+    } else {
+        return 'off';
       }
   },
 
