@@ -50,7 +50,9 @@
 
         function updateTemperature() {
           $('#temperature').text(thermostat._temperature);
-          $('#temperature').attr('class', thermostat.colour());
+          // $('#temperature').attr('class', thermostat.colour());
+          $('.den').css("background", thermostat.colour());
+
         }
 
     });
